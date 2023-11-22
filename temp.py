@@ -1,37 +1,24 @@
-# Тестовые данные.
-TEST_DATA: list[tuple[int, str, bool]] = [(44, 'success', True),
-                                          (16, 'failure', True),
-                                          (4, 'success', False),
-                                          (21, 'failure', False)]
-
-BONUS: float = 1.1
-ANTIBONUS: float = 0.8
+from math import sqrt
 
 
-def add_rep(rep_points: int, buf_effect: bool, current_rep: float):
-    current_rep += rep_points
-    if buf_effect:
-        return current_rep * BONUS
-    return current_rep
+message = ('Добро пожаловать в самую лучшую программу для вычисления '
+           'квадратного корня из заданного числа')
+print(message)
 
 
-def remove_rep(current_rep, rep_points, debuf_effect):
-    current_rep -= rep_points
-    if debuf_effect:
-        return current_rep * ANTIBONUS
-    return current_rep
+def CalculateSquareRoot(number):
+    """Вычисляет квадратный корень."""
+    return sqrt(number)
 
 
-def main(duel_res):
-    current_rep = 0.0
-    for rep, result, effect in duel_res:
-        if result == 'success':
-            current_rep = add_rep(current_rep, rep, effect)
-        if result == 'failure':
-            current_rep = remove_rep(current_rep, rep, effect)
-    return (f'После {len(duel_res)} поединков, репутация'
-            f'персонажа — {current_rep:.3f} очков.')
+def calc(your_number):
+    """Docstring"""
+    if your_number <= 0:
+        return 0
+    feature = CalculateSquareRoot(your_number)
+    print(f'Мы вычислили квадратный корень из введённого '
+          f'вами числа. Это будет: {feature}')
 
 
-# Тестовый вызов функции main.
-print(main(TEST_DATA))
+print(message)
+calc(25.5)
